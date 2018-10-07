@@ -1,0 +1,6 @@
+framework module Pods_ClimaCloset {
+  umbrella header "Pods-ClimaCloset-umbrella.h"
+
+  export *
+  module * { export * }
+}
