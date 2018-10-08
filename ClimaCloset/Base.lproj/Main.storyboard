@@ -80,15 +80,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="Aci-Or-5od" id="of6-IS-2iw"/>
+                        <outlet property="conditionLabel" destination="dJL-cl-z67" id="RQO-sK-1O2"/>
+                        <outlet property="temperatureLabel" destination="uqp-Ur-meP" id="6h1-eP-Z9M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.75" y="129.92957746478874"/>
         </scene>
-        <!--View Controller-->
+        <!--Clima View Controller-->
         <scene sceneID="KXw-uj-9Zc">
             <objects>
-                <viewController storyboardIdentifier="ClimaVC" id="qyU-1F-aeG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClimaVC" id="qyU-1F-aeG" customClass="ClimaViewController" customModule="ClimaCloset" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Aq-g2-vKw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,6 +122,9 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmPressed:" destination="qyU-1F-aeG" eventType="touchUpInside" id="YoH-Tm-U0F"/>
+                                </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3aN-Yq-BqB">
                                 <rect key="frame" x="168.5" y="630" width="39" height="37"/>
@@ -143,15 +151,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mgv-lk-jTt"/>
                     </view>
+                    <connections>
+                        <outlet property="cityInput" destination="4sf-RE-XDq" id="hRK-DH-aLw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBP-iS-xa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="519.375" y="793.30985915492954"/>
         </scene>
-        <!--View Controller-->
+        <!--Closet View Controller-->
         <scene sceneID="f2h-p5-Vhf">
             <objects>
-                <viewController storyboardIdentifier="ClosetVC" id="UiA-1t-JpB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClosetVC" id="UiA-1t-JpB" customClass="ClosetViewController" customModule="ClimaCloset" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RmG-N4-Se6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,6 +238,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dw-jc-XRZ"/>
                     </view>
+                    <connections>
+                        <outlet property="pantsItem" destination="rQg-0U-Wcc" id="LhD-aL-YBG"/>
+                        <outlet property="shoesItem" destination="69B-tt-F89" id="1cd-m2-xZm"/>
+                        <outlet property="topItem" destination="pZ8-Oi-DaU" id="Zbr-IL-aca"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfM-MP-h1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -234,7 +250,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bg 1" width="748" height="534"/>
+        <image name="Bg 1" width="239" height="689"/>
         <image name="Hoodie 1" width="450" height="450"/>
         <image name="Jeans 1" width="313" height="469"/>
         <image name="Sneakers 1" width="427" height="239"/>
