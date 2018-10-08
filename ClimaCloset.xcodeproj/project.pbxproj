@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06608A401154CBE1C560FA95 /* Pods_ClimaCloset.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88DD049AF5F2423FC377511 /* Pods_ClimaCloset.framework */; };
 		0966569A216B226B00CA52A5 /* Round Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09665699216B226B00CA52A5 /* Round Button.swift */; };
+		0966569C216B382A00CA52A5 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0966569B216B382A00CA52A5 /* PageViewController.swift */; };
 		09733E2C216B1E7A00DAB753 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09733E2B216B1E7A00DAB753 /* Images.xcassets */; };
 		09CB475C2169A55D003E8E80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CB475B2169A55D003E8E80 /* AppDelegate.swift */; };
 		09CB475E2169A55D003E8E80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CB475D2169A55D003E8E80 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		09665699216B226B00CA52A5 /* Round Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Round Button.swift"; sourceTree = "<group>"; };
+		0966569B216B382A00CA52A5 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		09733E2B216B1E7A00DAB753 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		09CB47582169A55D003E8E80 /* ClimaCloset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimaCloset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CB475B2169A55D003E8E80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				09CB475B2169A55D003E8E80 /* AppDelegate.swift */,
 				09CB475D2169A55D003E8E80 /* ViewController.swift */,
 				09CB475F2169A55D003E8E80 /* Main.storyboard */,
+				0966569B216B382A00CA52A5 /* PageViewController.swift */,
 				09733E2B216B1E7A00DAB753 /* Images.xcassets */,
 				09CB47642169A55F003E8E80 /* LaunchScreen.storyboard */,
 				09CB47672169A55F003E8E80 /* Info.plist */,
@@ -210,6 +213,7 @@
 				0966569A216B226B00CA52A5 /* Round Button.swift in Sources */,
 				09CB475E2169A55D003E8E80 /* ViewController.swift in Sources */,
 				09CB475C2169A55D003E8E80 /* AppDelegate.swift in Sources */,
+				0966569C216B382A00CA52A5 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
