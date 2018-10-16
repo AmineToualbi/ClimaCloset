@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
+import Alamofire
+import SwiftyJSON
+
 
 class WeatherViewController: UIViewController {
 
@@ -14,6 +18,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
+    
+    //Constants
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
+    let APP_ID = "8300f2d4182612b5d44c3fcb22ca0acc"
     
     
     override func viewDidLoad() {
