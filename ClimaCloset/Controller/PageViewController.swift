@@ -1,5 +1,5 @@
 //
-//  PageViewController.swift
+//  PageViewController.swift     -         Swiping functionality.
 //  ClimaCloset
 //
 //  Created by TOUALBI Amine  on 08/10/2018.

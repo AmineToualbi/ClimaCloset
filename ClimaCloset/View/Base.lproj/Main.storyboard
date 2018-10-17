@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Br-5u-Cm8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Br-5u-Cm8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJL-cl-z67">
-                                <rect key="frame" x="165.5" y="212" width="45" height="21"/>
+                                <rect key="frame" x="165" y="212" width="45" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -82,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="Aci-Or-5od" id="of6-IS-2iw"/>
+                        <outlet property="cityLabel" destination="Teg-dY-CLu" id="Kdg-i0-X0v"/>
                         <outlet property="conditionLabel" destination="dJL-cl-z67" id="RQO-sK-1O2"/>
                         <outlet property="temperatureLabel" destination="uqp-Ur-meP" id="6h1-eP-Z9M"/>
                     </connections>
@@ -127,7 +127,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3aN-Yq-BqB">
-                                <rect key="frame" x="168.5" y="630" width="39" height="37"/>
+                                <rect key="frame" x="168" y="630" width="39" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,7 +187,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sneakers 1" translatesAutoresizingMaskIntoConstraints="NO" id="69B-tt-F89">
-                                        <rect key="frame" x="72" y="298" width="75" height="65"/>
+                                        <rect key="frame" x="71" y="298" width="76" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="Eme-CV-LZG"/>
                                         </constraints>
@@ -205,7 +205,7 @@
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="9bB-zE-TeP">
-                                <rect key="frame" x="168.5" y="630" width="39" height="37"/>
+                                <rect key="frame" x="168" y="630" width="39" height="37"/>
                             </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-je-dl1">
                                 <rect key="frame" x="0.0" y="32" width="375" height="32"/>
@@ -250,10 +250,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bg 1" width="239" height="689"/>
-        <image name="Hoodie 1" width="450" height="450"/>
+        <image name="Bg 1" width="57.360000610351562" height="165.36000061035156"/>
+        <image name="Hoodie 1" width="108" height="108"/>
         <image name="Jeans 1" width="313" height="469"/>
         <image name="Sneakers 1" width="427" height="239"/>
-        <image name="Sun" width="750" height="1334"/>
+        <image name="Sun" width="180" height="320.16000366210938"/>
     </resources>
 </document>

@@ -69,18 +69,42 @@
 		09CB475A2169A55D003E8E80 /* ClimaCloset */ = {
 			isa = PBXGroup;
 			children = (
-				09CB475B2169A55D003E8E80 /* AppDelegate.swift */,
-				09CB475D2169A55D003E8E80 /* WeatherViewController.swift */,
-				09CB475F2169A55D003E8E80 /* Main.storyboard */,
-				0966569B216B382A00CA52A5 /* PageViewController.swift */,
+				09E8EC8D21756B24006D1DED /* Model */,
+				09E8EC8E21756B37006D1DED /* View */,
+				09E8EC8F21756B3B006D1DED /* Controller */,
 				09733E2B216B1E7A00DAB753 /* Images.xcassets */,
-				09CB47642169A55F003E8E80 /* LaunchScreen.storyboard */,
 				09CB47672169A55F003E8E80 /* Info.plist */,
-				09665699216B226B00CA52A5 /* Round Button.swift */,
-				0966569D216BF28000CA52A5 /* ClosetViewController.swift */,
-				0966569F216BF29300CA52A5 /* ClimaViewController.swift */,
 			);
 			path = ClimaCloset;
+			sourceTree = "<group>";
+		};
+		09E8EC8D21756B24006D1DED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09E8EC8E21756B37006D1DED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09CB475F2169A55D003E8E80 /* Main.storyboard */,
+				09CB47642169A55F003E8E80 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09E8EC8F21756B3B006D1DED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0966569B216B382A00CA52A5 /* PageViewController.swift */,
+				09CB475D2169A55D003E8E80 /* WeatherViewController.swift */,
+				0966569D216BF28000CA52A5 /* ClosetViewController.swift */,
+				0966569F216BF29300CA52A5 /* ClimaViewController.swift */,
+				09665699216B226B00CA52A5 /* Round Button.swift */,
+				09CB475B2169A55D003E8E80 /* AppDelegate.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		80817D1F04C0C387367D28A4 /* Pods */ = {
@@ -134,6 +158,7 @@
 				TargetAttributes = {
 					09CB47572169A55D003E8E80 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -375,7 +400,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toualbiapps.ClimaCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -394,7 +419,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toualbiapps.ClimaCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
