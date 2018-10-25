@@ -19,6 +19,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     
+    //Data retrieved from JSON.
     var temperature : Int = 0
     var city : String = ""
     var condition : Int = 0
@@ -27,8 +28,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var formattingSpaces : String = "   "
     
-    //currentTime will represent time of the day. 0 = day, 1 = early night, 2 = late night.
-    var currentTime : Int = 0
+    //timeOfDay will represent time of the day. 0 = day, 1 = early night, 2 = late night.
+    var timeOfDay : Int = 0
+    
+    var currentTime : String = ""
+    var sunriseTime : String = ""
+    var sunsetTime : String = ""
+    var currentTimeHour : Int = 0
+    var currentTimeMin : Int = 0
+    var sunsetHour : Int = 0
+    var sunsetMin : Int = 0
+    var sunriseHour : Int = 0
+    var sunriseMin : Int = 0
     
     
     //Constants
@@ -174,20 +185,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //MARK: - Check Time
-    func checkTime() {
+    func checkTime() -> Int {
         
         let calendar = Calendar.current
         //now is in the format 2018-10-25 06:21:42
         let now = Date()
         //localizedString gets time of current time zone.
-        let currentTime = DateFormatter.localizedString(from: now, dateStyle: .short, timeStyle: .short)
-        
-        print(now)
+        currentTime = DateFormatter.localizedString(from: now, dateStyle: .short, timeStyle: .short)
         print(currentTime)
-        
+
         //This part gets when the sun rises.
         let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(sunrise))
-        let sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
+        sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
         print(sunriseTime)
         
         //This part gets when sun sets.
@@ -195,24 +204,83 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let sunsetTime = DateFormatter.localizedString(from: sunsetUTC as Date, dateStyle: .short, timeStyle: .short)
         print(sunsetTime)
         
+        
+        convertTimeToInt(timeString: currentTime, timeType: 0)
+        convertTimeToInt(timeString: sunriseTime, timeType: 1)
+        convertTimeToInt(timeString: sunsetTime, timeType: 2)
+        
         let nightSeparationHour = 23
         
-        print(currentHour)
+        //Compare current time to sunset & sunrise time to set background of UI.
+        //Case 1 = EARLY NIGHT
+        if (currentTimeHour >= sunsetHour && currentTimeHour < nightSeparationHour){
+            if(currentTimeHour == sunsetHour && currentTimeMin >= sunsetMin){
+                return 1
+            }
+            else if(currentTimeHour > sunsetHour){
+                return 1
+            }
+        }
         
+        //Case 2 = LATE NIGHT
+        else if(currentTimeHour > sunsetHour && currentTimeMin >= nightSeparationHour){
+            return 2
+        }
         
+        return 0
+    }
+    
+    //If timeType = 0, we are calculating current tine. If timeType = 1 => sunrise. If timeType = 2 => sunset.
+    func convertTimeToInt(timeString : String, timeType : Int){
         
+        let startIndexHour = timeString.index(timeString.startIndex, offsetBy: 11)
+        let endIndexHour = timeString.index(timeString.startIndex, offsetBy: 12)
         
-        //EXPLORE USING EXTENSION TO STRING TO GET NEEDED VALUES TO COMPARE TIME. 
+        //Get hour of sunrise
+        //Ensure sunriseHour is not nil to avoid crash.
+        if let checkNil = (Int) (String(timeString[startIndexHour...endIndexHour])){
+            
+            if(timeType == 0){
+                currentTimeHour = checkNil
+                print(currentTimeHour)
+            }
+                
+            else if(timeType == 1){
+                sunriseHour = checkNil
+                print(sunriseHour)
+            }
+                
+            else if(timeType == 2){
+                sunsetHour = checkNil
+                print(sunsetHour)
+            }
+            
+        }
         
+        let startIndexMin = timeString.index(timeString.startIndex, offsetBy: 14)
+        let endIndexMin = timeString.index(timeString.startIndex, offsetBy: 15)
         
-//        if (now <= nightSeparation && now > (sunsetTime as Date)) {
-//            print("EARLY NIGT")
-//        }
-     //   if (currentTime >= nightSeparation){
-       //     print("LATE NIGT")
-       // }
+        //Get minute of sunrise.
+        //Ensure sunriseMin is not nil to avoid crash.
+        if let checkNil = (Int) (String(timeString[startIndexMin...endIndexMin])){
+            if(timeType == 0){
+                currentTimeMin = checkNil
+                print(currentTimeMin)
+            }
+            else if(timeType == 1){
+                sunriseMin = checkNil
+                print(sunriseMin)
+            }
+            else if(timeType == 2){
+                sunsetMin = checkNil
+                print(sunsetMin)
+            }
+
+            
+        }
         
     }
+    
     
     
     //MARK: - UI Updates
@@ -221,6 +289,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         temperatureLabel.text = String (temperature) + "°"
         cityLabel.text = formattingSpaces + city
+        
+        if(checkTime() == 0){
+            backgroundImage.image = UIImage(named: "Sun.png")
+        }
+        else if(checkTime() == 1){
+            backgroundImage.image = UIImage(named: "Moon.png")
+        }
+        else if(checkTime() == 2){
+            backgroundImage.image = UIImage(named: "Blood.jpg")
+        }
         
     }
 
