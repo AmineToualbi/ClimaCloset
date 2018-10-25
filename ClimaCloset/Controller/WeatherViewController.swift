@@ -22,6 +22,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var temperature : Int = 0
     var city : String = ""
     var condition : Int = 0
+    var sunrise : Int = 0
+    var sunset : Int = 0
+    
+    var formattingSpaces : String = "   "
+    
+    //currentTime will represent time of the day. 0 = day, 1 = early night, 2 = late night.
+    var currentTime : Int = 0
     
     
     //Constants
@@ -105,10 +112,17 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             city = json["name"].stringValue
             //Use index 0 here bc "weather" contains array & we need to choose index.
             condition = json["weather"][0]["id"].intValue
+            sunrise = json["sys"]["sunrise"].intValue
+            sunset = json["sys"]["sunset"].intValue
             
             print("TEMPERATURE " + String(temperature))
             print("CITY " + String(city))
             print("CONDITION " + String(condition))
+            print("SUNRISE " + String(sunrise))
+            print("SUNSET " + String(sunset))
+            
+            checkTime()
+            updateUI()
         }
         
         
@@ -156,6 +170,58 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         //We want to update location when app comes back to foreground.
         locationManager.startUpdatingLocation()
+    }
+    
+    
+    //MARK: - Check Time
+    func checkTime() {
+        
+        let calendar = Calendar.current
+        //now is in the format 2018-10-25 06:21:42
+        let now = Date()
+        //localizedString gets time of current time zone.
+        let currentTime = DateFormatter.localizedString(from: now, dateStyle: .short, timeStyle: .short)
+        
+        print(now)
+        print(currentTime)
+        
+        //This part gets when the sun rises.
+        let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(sunrise))
+        let sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
+        print(sunriseTime)
+        
+        //This part gets when sun sets.
+        let sunsetUTC = NSDate(timeIntervalSince1970: TimeInterval(sunset))
+        let sunsetTime = DateFormatter.localizedString(from: sunsetUTC as Date, dateStyle: .short, timeStyle: .short)
+        print(sunsetTime)
+        
+        let nightSeparationHour = 23
+        
+        print(currentHour)
+        
+        
+        
+        
+        //EXPLORE USING EXTENSION TO STRING TO GET NEEDED VALUES TO COMPARE TIME. 
+        
+        
+//        if (now <= nightSeparation && now > (sunsetTime as Date)) {
+//            print("EARLY NIGT")
+//        }
+     //   if (currentTime >= nightSeparation){
+       //     print("LATE NIGT")
+       // }
+        
+    }
+    
+    
+    //MARK: - UI Updates
+    func updateUI() {
+        
+        
+        temperatureLabel.text = String (temperature) + "°"
+        cityLabel.text = formattingSpaces + city
+        
     }
 
 
