@@ -11,6 +11,7 @@ import UIKit
 class ClimaViewController: UIViewController {
     
     @IBOutlet weak var cityInput: UITextField!
+    @IBOutlet weak var backgroundClima: UIImageView!
     
     
     override func viewDidLoad() {

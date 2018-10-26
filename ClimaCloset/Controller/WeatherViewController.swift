@@ -132,7 +132,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             print("SUNRISE " + String(sunrise))
             print("SUNSET " + String(sunset))
             
-            checkTime()
             updateUI()
         }
         
@@ -179,8 +178,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @objc func willEnterForeground(){
         print("enters foreground")
         
-        //We want to update location when app comes back to foreground.
+        //We want to update location and check time when app comes back to foreground.
         locationManager.startUpdatingLocation()
+        
     }
     
     
@@ -215,18 +215,22 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         //Case 1 = EARLY NIGHT
         if (currentTimeHour >= sunsetHour && currentTimeHour < nightSeparationHour){
             if(currentTimeHour == sunsetHour && currentTimeMin >= sunsetMin){
+                timeOfDay = 1
                 return 1
             }
             else if(currentTimeHour > sunsetHour){
+                timeOfDay = 1
                 return 1
             }
         }
         
         //Case 2 = LATE NIGHT
         else if(currentTimeHour > sunsetHour && currentTimeMin >= nightSeparationHour){
+            timeOfDay = 2
             return 2
         }
         
+        timeOfDay = 0
         return 0
     }
     
@@ -302,6 +306,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
+    
+    //Figure out how to also change background of two other tabs. 
 
 }
 

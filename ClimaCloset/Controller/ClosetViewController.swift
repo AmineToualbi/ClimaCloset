@@ -13,6 +13,7 @@ class ClosetViewController: UIViewController {
     @IBOutlet weak var topItem: UIImageView!
     @IBOutlet weak var pantsItem: UIImageView!
     @IBOutlet weak var shoesItem: UIImageView!
+    @IBOutlet weak var backgroundCloset: UIImageView!
     
     
     

@@ -50,8 +50,8 @@
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="um4-Sz-CgH">
                                 <rect key="frame" x="144" y="630" width="84" height="37"/>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClimaCloset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-jM-PxP">
-                                <rect key="frame" x="0.0" y="32" width="375" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clima Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-jM-PxP">
+                                <rect key="frame" x="0.0" y="46" width="375" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uqp-Ur-meP" firstAttribute="top" secondItem="8AO-jM-PxP" secondAttribute="bottom" constant="76" id="5RD-Wo-aYj"/>
+                            <constraint firstItem="uqp-Ur-meP" firstAttribute="top" secondItem="8AO-jM-PxP" secondAttribute="bottom" constant="62" id="5RD-Wo-aYj"/>
                             <constraint firstItem="um4-Sz-CgH" firstAttribute="trailing" secondItem="uqp-Ur-meP" secondAttribute="trailing" constant="1" id="BQB-3i-EVH"/>
                             <constraint firstItem="dJL-cl-z67" firstAttribute="top" secondItem="uqp-Ur-meP" secondAttribute="bottom" constant="8" symbolic="YES" id="D4L-UF-M59"/>
                             <constraint firstItem="Aci-Or-5od" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="O21-C0-6LY"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="8AO-jM-PxP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fOn-Nn-c0J"/>
                             <constraint firstItem="uqp-Ur-meP" firstAttribute="centerX" secondItem="8AO-jM-PxP" secondAttribute="centerX" id="gNV-Vr-wJ5"/>
                             <constraint firstItem="Aci-Or-5od" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gnz-vF-ouK"/>
-                            <constraint firstItem="8AO-jM-PxP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="lGL-Sq-kLc"/>
+                            <constraint firstItem="8AO-jM-PxP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="lGL-Sq-kLc"/>
                             <constraint firstItem="Teg-dY-CLu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mjW-Z1-qen"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Teg-dY-CLu" secondAttribute="bottom" constant="67" id="oVz-Zj-3a0"/>
                             <constraint firstItem="um4-Sz-CgH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="144" id="pM4-HK-A2j"/>
@@ -98,11 +98,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bg 1" translatesAutoresizingMaskIntoConstraints="NO" id="yxg-cR-SJI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sun BG" translatesAutoresizingMaskIntoConstraints="NO" id="yxg-cR-SJI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Clima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hn-7D-exm">
-                                <rect key="frame" x="0.0" y="32" width="375" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clima" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hn-7D-exm">
+                                <rect key="frame" x="0.0" y="46" width="375" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                             <constraint firstItem="yxg-cR-SJI" firstAttribute="leading" secondItem="6Hn-7D-exm" secondAttribute="leading" id="PXM-W7-2jM"/>
                             <constraint firstItem="tLk-1u-Psz" firstAttribute="top" secondItem="4sf-RE-XDq" secondAttribute="bottom" constant="33" id="Shn-zt-kN3"/>
                             <constraint firstItem="4sf-RE-XDq" firstAttribute="leading" secondItem="Mgv-lk-jTt" secondAttribute="leading" constant="58" id="TBM-mP-XiC"/>
-                            <constraint firstItem="6Hn-7D-exm" firstAttribute="top" secondItem="Mgv-lk-jTt" secondAttribute="top" constant="12" id="YIM-US-BSw"/>
+                            <constraint firstItem="6Hn-7D-exm" firstAttribute="top" secondItem="Mgv-lk-jTt" secondAttribute="top" constant="26" id="YIM-US-BSw"/>
                             <constraint firstAttribute="trailing" secondItem="yxg-cR-SJI" secondAttribute="trailing" id="dXa-aA-5Ts"/>
                             <constraint firstItem="3aN-Yq-BqB" firstAttribute="centerX" secondItem="tLk-1u-Psz" secondAttribute="centerX" id="doZ-NJ-Ek5"/>
                             <constraint firstItem="yxg-cR-SJI" firstAttribute="centerY" secondItem="tLk-1u-Psz" secondAttribute="centerY" id="e3N-Fu-uCO"/>
@@ -152,6 +152,7 @@
                         <viewLayoutGuide key="safeArea" id="Mgv-lk-jTt"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundClima" destination="yxg-cR-SJI" id="hTa-cc-kpi"/>
                         <outlet property="cityInput" destination="4sf-RE-XDq" id="hRK-DH-aLw"/>
                     </connections>
                 </viewController>
@@ -167,7 +168,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bg 1" translatesAutoresizingMaskIntoConstraints="NO" id="ZhT-YZ-KlF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sun BG" translatesAutoresizingMaskIntoConstraints="NO" id="ZhT-YZ-KlF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-C4-iKy" userLabel="Top View">
@@ -207,8 +208,8 @@
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="9bB-zE-TeP">
                                 <rect key="frame" x="168" y="630" width="39" height="37"/>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-je-dl1">
-                                <rect key="frame" x="0.0" y="32" width="375" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-je-dl1">
+                                <rect key="frame" x="0.0" y="46" width="375" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="F6d-XT-ibv"/>
                                 </constraints>
@@ -221,15 +222,15 @@
                         <constraints>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="trailing" secondItem="bNf-je-dl1" secondAttribute="trailing" id="5fY-qa-gV7"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="bottom" secondItem="7dw-jc-XRZ" secondAttribute="bottom" id="Faj-p9-VhQ"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="21" id="Jxg-cl-ePK"/>
-                            <constraint firstItem="bNf-je-dl1" firstAttribute="top" secondItem="7dw-jc-XRZ" secondAttribute="top" constant="12" id="R15-yL-Xeq"/>
+                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="7" id="Jxg-cl-ePK"/>
+                            <constraint firstItem="bNf-je-dl1" firstAttribute="top" secondItem="7dw-jc-XRZ" secondAttribute="top" constant="26" id="R15-yL-Xeq"/>
                             <constraint firstItem="bNf-je-dl1" firstAttribute="leading" secondItem="ldf-C4-iKy" secondAttribute="leading" id="RoY-Pv-bzY"/>
                             <constraint firstAttribute="trailing" secondItem="ZhT-YZ-KlF" secondAttribute="trailing" id="TmQ-rE-Iko"/>
                             <constraint firstItem="7dw-jc-XRZ" firstAttribute="bottom" secondItem="ldf-C4-iKy" secondAttribute="bottom" constant="19" id="Uap-ar-w2d"/>
                             <constraint firstItem="ldf-C4-iKy" firstAttribute="leading" secondItem="7dw-jc-XRZ" secondAttribute="leading" id="UkL-qG-hdm"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="leading" secondItem="bNf-je-dl1" secondAttribute="leading" id="Xks-qI-D0s"/>
                             <constraint firstItem="bNf-je-dl1" firstAttribute="trailing" secondItem="ldf-C4-iKy" secondAttribute="trailing" id="czw-PD-ll6"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="21" id="dgg-Th-3ru"/>
+                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="7" id="dgg-Th-3ru"/>
                             <constraint firstItem="9bB-zE-TeP" firstAttribute="bottom" secondItem="ZhT-YZ-KlF" secondAttribute="bottom" id="kqC-A2-xAu"/>
                             <constraint firstItem="9bB-zE-TeP" firstAttribute="centerX" secondItem="ldf-C4-iKy" secondAttribute="centerX" id="sV8-fY-sX5"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="top" secondItem="RmG-N4-Se6" secondAttribute="top" id="uYD-dz-6bI"/>
@@ -239,6 +240,7 @@
                         <viewLayoutGuide key="safeArea" id="7dw-jc-XRZ"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundCloset" destination="ZhT-YZ-KlF" id="63e-SF-yWm"/>
                         <outlet property="pantsItem" destination="rQg-0U-Wcc" id="LhD-aL-YBG"/>
                         <outlet property="shoesItem" destination="69B-tt-F89" id="1cd-m2-xZm"/>
                         <outlet property="topItem" destination="pZ8-Oi-DaU" id="Zbr-IL-aca"/>
@@ -250,10 +252,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bg 1" width="57.360000610351562" height="165.36000061035156"/>
         <image name="Hoodie 1" width="108" height="108"/>
         <image name="Jeans 1" width="313" height="469"/>
         <image name="Sneakers 1" width="427" height="239"/>
         <image name="Sun" width="180" height="320.16000366210938"/>
+        <image name="Sun BG" width="57.360000610351562" height="165.36000061035156"/>
     </resources>
 </document>

@@ -15,6 +15,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             self.newVC(viewController : "WeatherVC"),
         self.newVC(viewController : "ClosetVC")]
     }()
+ 
     
     
     override func viewDidLoad() {
@@ -23,12 +24,24 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         // Do any additional setup after loading the view.
         
         self.dataSource = self
+        
+       
+        
         //If let to check if firstViewController is not nil to use it.
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
+        var start : Bool = true
+        
+        if(start == true) {
+            setViewControllers([orderedViewControllers[1]],
                                direction: .forward, animated: true, completion: nil)
         }
-        
+        else{
+                    if let firstViewController = orderedViewControllers.first{
+                        setViewControllers([firstViewController],
+                                           direction: .forward, animated: true, completion: nil)
+            
+                }
+        }
+     
         self.delegate = self
     }
     
@@ -92,14 +105,5 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
