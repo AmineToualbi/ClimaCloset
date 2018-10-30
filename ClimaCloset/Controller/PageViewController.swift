@@ -15,34 +15,25 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             self.newVC(viewController : "WeatherVC"),
         self.newVC(viewController : "ClosetVC")]
     }()
- 
+    
+    var myViewControllers = [UIViewController]()
+    
+    var currentIndex : Int = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+    
         self.dataSource = self
         
-       
-        
-        //If let to check if firstViewController is not nil to use it.
-        var start : Bool = true
-        
-        if(start == true) {
-            setViewControllers([orderedViewControllers[1]],
+        setViewControllers([orderedViewControllers[1]],
                                direction: .forward, animated: true, completion: nil)
-        }
-        else{
-                    if let firstViewController = orderedViewControllers.first{
-                        setViewControllers([firstViewController],
-                                           direction: .forward, animated: true, completion: nil)
-            
-                }
-        }
      
         self.delegate = self
+        
+    
     }
     
     
@@ -60,6 +51,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
+       
+        
         let previousIndex = viewControllerIndex - 1;
         
         guard previousIndex >= 0 else {
@@ -72,6 +65,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
+        currentIndex = previousIndex
+        
         return orderedViewControllers[previousIndex]
         
     }
@@ -79,7 +74,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         //Guard = some kind of if statement.
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController)
+            else {
             return nil
         }
         
@@ -95,6 +91,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
+        if(nextIndex == 0) {
+            let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "ClimaVC") as! ClimaViewController
+            secondVC.timeOfDayClima = 1
+        }
+        
         return orderedViewControllers[nextIndex]
         
     }
@@ -103,7 +104,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-
-
 }

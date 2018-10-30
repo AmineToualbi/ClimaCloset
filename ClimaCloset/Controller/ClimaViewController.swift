@@ -8,15 +8,33 @@
 
 import UIKit
 
-class ClimaViewController: UIViewController {
+protocol ChangeCityDelegate {
+    func userEnteredNewCityName(city : String)
+}
+
+
+class ClimaViewController: UIViewController, WeatherDelegate {
+    func sendTimeInfo(time: Int) {
+        
+    }
+    
     
     @IBOutlet weak var cityInput: UITextField!
     @IBOutlet weak var backgroundClima: UIImageView!
+    
+    var timeOfDayClima : Int = 0
+    
+    var delegate : ChangeCityDelegate?
+    
+    var completionHandler:((String) -> Int)?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        updateBackground()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,6 +43,41 @@ class ClimaViewController: UIViewController {
     }
     
     @IBAction func confirmPressed(_ sender: Any) {
+        
+        print("CONFIRM CALLED")
+        
+        let cityName = cityInput.text!
+        
+        delegate?.userEnteredNewCityName(city: cityName)
+        
+
+        
+        
     }
+    
+    //MARK: - UI Updates
+    func updateBackground() {
+        
+        
+        timeOfDayClima = WeatherViewController.timeOfDayStatic
+        
+        if(timeOfDayClima == 0){
+            backgroundClima.image = UIImage(named: "Sun BG.png")
+        }
+        else if(timeOfDayClima == 1){
+            backgroundClima.image = UIImage(named: "Moon BG.png")
+        }
+        else if(timeOfDayClima == 2){
+            backgroundClima.image = UIImage(named: "Blood BG.jpg")
+        }
+        
+    }
+    
+//    func sendTimeInfo(time: Int) {
+//
+//       timeOfDayClima = time
+//        print("TIME CLIMA IS " + String(timeOfDayClima))
+//
+//    }
     
 }

@@ -11,13 +11,23 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
+protocol WeatherDelegate {
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {
+    func sendTimeInfo(time : Int)
+
+}
+
+
+class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
+    
+    
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
+    
+   var delegate : WeatherDelegate?
     
     //Data retrieved from JSON.
     var temperature : Int = 0
@@ -28,8 +38,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var formattingSpaces : String = "   "
     
+    static let notificationName = Notification.Name("myNotificationName")
+
+    
     //timeOfDay will represent time of the day. 0 = day, 1 = early night, 2 = late night.
     var timeOfDay : Int = 0
+    static var timeOfDayStatic : Int = 0
+
     
     var currentTime : String = ""
     var sunriseTime : String = ""
@@ -216,22 +231,27 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         if (currentTimeHour >= sunsetHour && currentTimeHour < nightSeparationHour){
             if(currentTimeHour == sunsetHour && currentTimeMin >= sunsetMin){
                 timeOfDay = 1
+                WeatherViewController.timeOfDayStatic = timeOfDay
                 return 1
             }
             else if(currentTimeHour > sunsetHour){
                 timeOfDay = 1
+                WeatherViewController.timeOfDayStatic = timeOfDay
                 return 1
             }
         }
-        
+
         //Case 2 = LATE NIGHT
-        else if(currentTimeHour > sunsetHour && currentTimeMin >= nightSeparationHour){
+        else if(currentTimeHour > nightSeparationHour){
             timeOfDay = 2
+            WeatherViewController.timeOfDayStatic = timeOfDay
             return 2
         }
-        
+
         timeOfDay = 0
+        WeatherViewController.timeOfDayStatic = timeOfDay
         return 0
+        
     }
     
     //If timeType = 0, we are calculating current tine. If timeType = 1 => sunrise. If timeType = 2 => sunset.
@@ -307,7 +327,21 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     
-    //Figure out how to also change background of two other tabs. 
 
+    func sendTimeInfo(timeOfDay : Int) {
+        delegate?.sendTimeInfo(time: 1)
+    }
+    
+    
+    
+    //MARK - DELEGATE FROM CLIMAVC
+    func userEnteredNewCityName(city: String) {
+        
+        print("DATA RESEIVED")
+        let params : [String: String] = ["q" : city, "appid" : APP_ID]
+        getWeatherData(url: WEATHER_URL, params: params)
+    }
+    
+  
 }
 
