@@ -19,8 +19,6 @@ protocol WeatherDelegate {
 
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
-    
-    
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionLabel: UILabel!
@@ -247,6 +245,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             WeatherViewController.timeOfDayStatic = timeOfDay
             return 2
         }
+        else if(currentTimeHour <= sunriseHour){
+            if(currentTimeHour == sunriseHour && currentTimeMin <= sunriseMin) {
+                timeOfDay = 2
+                WeatherViewController.timeOfDayStatic = timeOfDay
+                return 2
+            }
+            if(currentTimeHour < sunriseHour) {
+                timeOfDay = 2
+                WeatherViewController.timeOfDayStatic = timeOfDay
+                return 2
+            }
+        }
 
         timeOfDay = 0
         WeatherViewController.timeOfDayStatic = timeOfDay
@@ -310,7 +320,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     //MARK: - UI Updates
     func updateUI() {
         
-        
         temperatureLabel.text = String (temperature) + "°"
         cityLabel.text = formattingSpaces + city
         
@@ -344,4 +353,5 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
   
 }
+
 

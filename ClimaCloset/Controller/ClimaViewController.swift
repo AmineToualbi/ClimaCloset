@@ -25,9 +25,7 @@ class ClimaViewController: UIViewController, WeatherDelegate {
     var timeOfDayClima : Int = 0
     
     var delegate : ChangeCityDelegate?
-    
-    var completionHandler:((String) -> Int)?
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +48,7 @@ class ClimaViewController: UIViewController, WeatherDelegate {
         
         delegate?.userEnteredNewCityName(city: cityName)
         
+        
 
         
         
@@ -58,8 +57,9 @@ class ClimaViewController: UIViewController, WeatherDelegate {
     //MARK: - UI Updates
     func updateBackground() {
         
-        
-        timeOfDayClima = WeatherViewController.timeOfDayStatic
+        print("CLIMA " + String(timeOfDayClima))
+
+        //timeOfDayClima = WeatherViewController.timeOfDayStatic
         
         if(timeOfDayClima == 0){
             backgroundClima.image = UIImage(named: "Sun BG.png")

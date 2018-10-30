@@ -67,6 +67,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         
         currentIndex = previousIndex
         
+        if(currentIndex == 0) {
+            (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+        }
+        
         return orderedViewControllers[previousIndex]
         
     }
@@ -91,9 +95,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
-        if(nextIndex == 0) {
-            let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "ClimaVC") as! ClimaViewController
-            secondVC.timeOfDayClima = 1
+        if(currentIndex == orderedViewControllers.count-1) {
+            (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }
         
         return orderedViewControllers[nextIndex]
