@@ -17,15 +17,14 @@ class ClosetViewController: UIViewController {
     
     var timeOfDayCloset : Int = 0
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         updateBackground()
-
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,11 +34,11 @@ class ClosetViewController: UIViewController {
     //MARK: - UI Updates
     func updateBackground() {
         
-        print("CLOSET " + String(timeOfDayCloset))
+        //print("CLOSET " + String(timeOfDayCloset))
         
-        
-     //   timeOfDayCloset = WeatherViewController.timeOfDayStatic
-        
+//        //Soluce 1
+//        timeOfDayCloset = WeatherViewController.timeOfDayStatic
+//        
         if(timeOfDayCloset == 0){
             backgroundCloset.image = UIImage(named: "Sun BG.png")
         }

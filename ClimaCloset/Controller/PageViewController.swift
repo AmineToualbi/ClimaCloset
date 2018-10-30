@@ -67,6 +67,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         
         currentIndex = previousIndex
         
+        //Soluce 2
         if(currentIndex == 0) {
             (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }
@@ -95,6 +96,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
+        currentIndex = nextIndex
+        
+       //Soluce 2
         if(currentIndex == orderedViewControllers.count-1) {
             (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }

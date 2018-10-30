@@ -57,10 +57,11 @@ class ClimaViewController: UIViewController, WeatherDelegate {
     //MARK: - UI Updates
     func updateBackground() {
         
-        print("CLIMA " + String(timeOfDayClima))
+       // print("CLIMA " + String(timeOfDayClima))
 
-        //timeOfDayClima = WeatherViewController.timeOfDayStatic
-        
+//        //Soluce 1
+//        timeOfDayClima = WeatherViewController.timeOfDayStatic
+//
         if(timeOfDayClima == 0){
             backgroundClima.image = UIImage(named: "Sun BG.png")
         }
