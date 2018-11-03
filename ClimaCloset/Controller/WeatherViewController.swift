@@ -27,12 +27,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
    var delegate : WeatherDelegate?
     
+    //Instance variable of other classes.
+    let weatherDataModel = WeatherDataModel()
+
+    
     //Data retrieved from JSON.
-    var temperature : Int = 0
-    var city : String = ""
-    var condition : Int = 0
-    var sunrise : Int = 0
-    var sunset : Int = 0
+   // var temperature : Int = 0
+//    var city : String = ""
+//    var condition : Int = 0
+   // var sunrise : Int = 0
+   // var sunset : Int = 0
     
     var formattingSpaces : String = "   "
     
@@ -132,18 +136,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         //We only need to check that one field is filled to ensure the others are.
         if let tempResult = json["main"]["temp"].double {
             
-            temperature = Int (tempResult - 273.15)
-            city = json["name"].stringValue
+            weatherDataModel.temperature = Int (tempResult - 273.15)
+            weatherDataModel.city = json["name"].stringValue
             //Use index 0 here bc "weather" contains array & we need to choose index.
-            condition = json["weather"][0]["id"].intValue
-            sunrise = json["sys"]["sunrise"].intValue
-            sunset = json["sys"]["sunset"].intValue
+            weatherDataModel.condition = json["weather"][0]["id"].intValue
+            weatherDataModel.sunrise = json["sys"]["sunrise"].intValue
+            weatherDataModel.sunset = json["sys"]["sunset"].intValue
             
-            print("TEMPERATURE " + String(temperature))
-            print("CITY " + String(city))
-            print("CONDITION " + String(condition))
-            print("SUNRISE " + String(sunrise))
-            print("SUNSET " + String(sunset))
+            print("TEMPERATURE " + String(weatherDataModel.temperature))
+            print("CITY " + String(weatherDataModel.city))
+            print("CONDITION " + String(weatherDataModel.condition))
+            print("SUNRISE " + String(weatherDataModel.sunrise))
+            print("SUNSET " + String(weatherDataModel.sunset))
             
             updateUI()
         }
@@ -208,12 +212,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         print(currentTime)
 
         //This part gets when the sun rises.
-        let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(sunrise))
+        let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunrise))
         sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
         print(sunriseTime)
         
         //This part gets when sun sets.
-        let sunsetUTC = NSDate(timeIntervalSince1970: TimeInterval(sunset))
+        let sunsetUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunset))
         let sunsetTime = DateFormatter.localizedString(from: sunsetUTC as Date, dateStyle: .short, timeStyle: .short)
         print(sunsetTime)
         
@@ -320,8 +324,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     //MARK: - UI Updates
     func updateUI() {
         
-        temperatureLabel.text = String (temperature) + "°"
-        cityLabel.text = formattingSpaces + city
+        temperatureLabel.text = String (weatherDataModel.temperature) + "°"
+        cityLabel.text = formattingSpaces + weatherDataModel.city
+        conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
         
         if(checkTime() == 0){
             backgroundImage.image = UIImage(named: "Sun.png")
