@@ -13,7 +13,7 @@ protocol ChangeCityDelegate {
 }
 
 
-class ClimaViewController: UIViewController, WeatherDelegate {
+class ClimaViewController: UIViewController, WeatherDelegate, UITextFieldDelegate {
     func sendTimeInfo(time: Int) {
         
     }
@@ -31,6 +31,7 @@ class ClimaViewController: UIViewController, WeatherDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        cityInput.delegate = self
         updateBackground()
         
     }
@@ -48,10 +49,6 @@ class ClimaViewController: UIViewController, WeatherDelegate {
         
         delegate?.userEnteredNewCityName(city: cityName)
         
-        
-
-        
-        
     }
     
     //MARK: - UI Updates
@@ -64,21 +61,31 @@ class ClimaViewController: UIViewController, WeatherDelegate {
 //
         if(timeOfDayClima == 0){
             backgroundClima.image = UIImage(named: "Sun BG.png")
+            cityInput.keyboardAppearance = .light
         }
         else if(timeOfDayClima == 1){
             backgroundClima.image = UIImage(named: "Moon BG.png")
+            cityInput.keyboardAppearance = .dark
+
         }
         else if(timeOfDayClima == 2){
             backgroundClima.image = UIImage(named: "Blood BG.jpg")
+            cityInput.keyboardAppearance = .dark
+
         }
         
     }
     
-//    func sendTimeInfo(time: Int) {
-//
-//       timeOfDayClima = time
-//        print("TIME CLIMA IS " + String(timeOfDayClima))
-//
-//    }
+    //Dismiss keyboard when user taps outside. 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        //or
+        //self.view.endEditing(true)
+        return true
+    }
 }
