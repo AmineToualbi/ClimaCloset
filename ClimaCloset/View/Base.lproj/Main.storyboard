@@ -13,7 +13,7 @@
         <!--Page View Controller-->
         <scene sceneID="bMW-Rz-zmH">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="8Br-5u-Cm8" customClass="PageViewController" customModule="ClimaCloset" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="8Br-5u-Cm8" customClass="PageViewController" customModule="ClimaCloset" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTH-j8-XkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128" y="-546"/>

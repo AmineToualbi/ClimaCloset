@@ -11,21 +11,15 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-protocol WeatherDelegate {
-
-    func sendTimeInfo(time : Int)
-
-}
 
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
+
+class WeatherViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
-    
-   var delegate : WeatherDelegate?
     
     //Instance variable of other classes.
     let weatherDataModel = WeatherDataModel()
@@ -57,6 +51,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     var sunsetMin : Int = 0
     var sunriseHour : Int = 0
     var sunriseMin : Int = 0
+
     
     
     //Constants
@@ -290,7 +285,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 
             else if(timeType == 2){
                 sunsetHour = checkNil
-                print(sunsetHour)
+                print("Sunset hour \(sunsetHour)")
             }
             
         }
@@ -311,7 +306,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             }
             else if(timeType == 2){
                 sunsetMin = checkNil
-                print(sunsetMin)
+                print("Sunset min \(sunsetMin)")
             }
 
             
@@ -332,7 +327,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             backgroundImage.image = UIImage(named: "Sun.png")
         }
         else if(checkTime() == 1){
-            backgroundImage.image = UIImage(named: "Moon.png")
+            backgroundImage?.image = UIImage(named: "Moon.png")
         }
         else if(checkTime() == 2){
             backgroundImage.image = UIImage(named: "Blood.jpg")
@@ -341,20 +336,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     }
 
     
-
-    func sendTimeInfo(timeOfDay : Int) {
-        delegate?.sendTimeInfo(time: 1)
-    }
     
-    
-    
-    //MARK - DELEGATE FROM CLIMAVC
     func userEnteredNewCityName(city: String) {
         
-        print("DATA RESEIVED")
+        print("DATA RECEIVED")
+
         let params : [String: String] = ["q" : city, "appid" : APP_ID]
         getWeatherData(url: WEATHER_URL, params: params)
+
     }
+    
     
   
 }

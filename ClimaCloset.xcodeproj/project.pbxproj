@@ -101,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				0966569B216B382A00CA52A5 /* PageViewController.swift */,
-				09CB475D2169A55D003E8E80 /* WeatherViewController.swift */,
 				0966569D216BF28000CA52A5 /* ClosetViewController.swift */,
+				09CB475D2169A55D003E8E80 /* WeatherViewController.swift */,
 				0966569F216BF29300CA52A5 /* ClimaViewController.swift */,
 				09665699216B226B00CA52A5 /* Round Button.swift */,
 				09CB475B2169A55D003E8E80 /* AppDelegate.swift */,

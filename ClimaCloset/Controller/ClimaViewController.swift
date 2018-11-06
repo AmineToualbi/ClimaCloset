@@ -8,24 +8,20 @@
 
 import UIKit
 
-protocol ChangeCityDelegate {
-    func userEnteredNewCityName(city : String)
-}
 
-
-class ClimaViewController: UIViewController, WeatherDelegate, UITextFieldDelegate {
-    func sendTimeInfo(time: Int) {
-        
-    }
+class ClimaViewController: UIViewController, UITextFieldDelegate {
+  
+    let weatherDataModel = WeatherDataModel()
     
+    static var pressed : Bool = false
+    static var newCity : String = ""
+    var cityName : String = ""
     
     @IBOutlet weak var cityInput: UITextField!
     @IBOutlet weak var backgroundClima: UIImageView!
     
     var timeOfDayClima : Int = 0
     
-    var delegate : ChangeCityDelegate?
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +39,24 @@ class ClimaViewController: UIViewController, WeatherDelegate, UITextFieldDelegat
     
     @IBAction func confirmPressed(_ sender: Any) {
         
-        print("CONFIRM CALLED")
         
-        let cityName = cityInput.text!
+        if let city = cityInput.text{
+            cityName = city
+        }
+        ClimaViewController.newCity = cityName
+        weatherDataModel.city = cityName
+        ClimaViewController.pressed = true
+        print("CONFIRM CALLED " + String(ClimaViewController.newCity))
+
         
-        delegate?.userEnteredNewCityName(city: cityName)
+        
+       // let weatherVC = WeatherViewController()
+       // let weatherVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherVC") as! WeatherViewController
+        
+      //  weatherVC.userEnteredNewCityName(city: cityName)
+        
+        
+       // self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -81,6 +90,7 @@ class ClimaViewController: UIViewController, WeatherDelegate, UITextFieldDelegat
         self.view.endEditing(true)
     }
     
+    //Dismiss keyboard when user taps on "Enter" button. 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()

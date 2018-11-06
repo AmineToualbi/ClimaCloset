@@ -72,6 +72,13 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }
         
+        if(ClimaViewController.pressed) {
+            print("PRESSED TRUE IN FIRST. CITY = \(ClimaViewController.newCity)")
+            (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
+           // (orderedViewControllers[1] as! WeatherViewController).updateUI()
+
+        }
+        
         return orderedViewControllers[previousIndex]
         
     }
@@ -102,7 +109,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         if(currentIndex == orderedViewControllers.count-1) {
             (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }
-        
+        if(ClimaViewController.pressed) {
+            print("PRESSED TRUE IN SECOND. City =  \(ClimaViewController.newCity)")
+            (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
+          //  (orderedViewControllers[1] as! WeatherViewController).updateUI()
+            
+        }
         return orderedViewControllers[nextIndex]
         
     }
