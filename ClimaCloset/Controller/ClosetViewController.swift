@@ -35,11 +35,9 @@ class ClosetViewController: UIViewController {
     //MARK: - UI Updates
     func updateBackground() {
         
-        //print("CLOSET " + String(timeOfDayCloset))
-        
 //        //Soluce 1
 //        timeOfDayCloset = WeatherViewController.timeOfDayStatic
-//        
+        
         if(timeOfDayCloset == 0){
             backgroundCloset.image = UIImage(named: "Sun BG.png")
         }

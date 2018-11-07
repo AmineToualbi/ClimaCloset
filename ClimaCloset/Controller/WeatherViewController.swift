@@ -24,25 +24,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     //Instance variable of other classes.
     let weatherDataModel = WeatherDataModel()
-
-    
-    //Data retrieved from JSON.
-   // var temperature : Int = 0
-//    var city : String = ""
-//    var condition : Int = 0
-   // var sunrise : Int = 0
-   // var sunset : Int = 0
     
     var formattingSpaces : String = "   "
     
     static let notificationName = Notification.Name("myNotificationName")
-
     
-    //timeOfDay will represent time of the day. 0 = day, 1 = early night, 2 = late night.
+    //timeOfDay: 0 = day, 1 = early night, 2 = late night.
     var timeOfDay : Int = 0
     static var timeOfDayStatic : Int = 0
 
-    
     var currentTime : String = ""
     var sunriseTime : String = ""
     var sunsetTime : String = ""
@@ -56,8 +46,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var long : CLLocationDegrees = 0
     var lat : CLLocationDegrees = 0
 
-    
-    
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "8300f2d4182612b5d44c3fcb22ca0acc"
@@ -83,21 +71,61 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        
     }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
+    //MARK: - Notification Observer Methods
+    //Function when app comes back from background.
+    @objc func willEnterForeground(){
+        print("enters foreground")
+        
+        //We want to update location and check time when app comes back to foreground.
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    
+    //MARK - Location
+    //Receive Location Information from Delegate.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //Array locations[] stores location.
+        //locations[1] is rough estimation & last one is most precise.
+        let location = locations[locations.count - 1];
+        
+        //If location is valid: (horizontalAccuracy < 0 = invalid)
+        if(location.horizontalAccuracy > 0){
+            
+            locationManager.stopUpdatingLocation()  //Stop updating bc process is battery intensive.
+            let latitude = String (location.coordinate.latitude)
+            let longitude = String (location.coordinate.longitude)
+            lat = location.coordinate.latitude
+            long = location.coordinate.longitude
+            print("Lat : " + latitude + " Longit : " + longitude)
+            
+            //Create Dictionary / Hash Table with parameters that will go into URL of HTTP GET request.
+            let params : [String : String] = ["lat" : latitude,
+                                              "lon" : longitude,
+                                              "appid" : APP_ID]
+            
+            getWeatherData(url : WEATHER_URL, params : params)
+            
+        }
+    }
+    
+    //Fail of locationManager.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        cityLabel.text = formattingSpaces + "Location Unavailable"
+    }
     
   
     //MARK - NETWORKING
-    
     func getWeatherData(url : String, params : [String : String]){
         
         //Send GET request & expect answer as JSON.
@@ -105,6 +133,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             response in
             
             if response.result.isSuccess {
+                
                 print("Response received through Alamofire")
                 
                 //Check if data was received through response. 
@@ -119,14 +148,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             else {
-                print("ERROR \(response.result.error)")
                 
-                self.cityLabel.text = "Connection Issues"
+                print("ERROR \(response.result.error)")
+            
+                self.cityLabel.text = self.formattingSpaces + "Connection Issues"
                 
             }
-           
         }
-        
     }
     
     
@@ -142,6 +170,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             weatherDataModel.sunrise = json["sys"]["sunrise"].intValue
             weatherDataModel.sunset = json["sys"]["sunset"].intValue
             
+            //Set lat & long to JSON values bc we don't already have it if user inputs city name.
             lat = json["coord"]["lat"].doubleValue
             long = json["coord"]["lon"].doubleValue
             
@@ -154,56 +183,38 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             print("LONG " + String(long))
             
             updateUI()
-        }
-        
-        
-    }
-    
-    
-    //MARK - Location
-    //Receive Location Information from Delegate.
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        //Array locations[] stores location.
-        //locations[1] is rough estimation & last one is most precise.
-        let location = locations[locations.count - 1];
-    
-        
-        //If location is valid: (horizontalAccuracy < 0 = invalid)
-        if(location.horizontalAccuracy > 0){
-            
-            locationManager.stopUpdatingLocation()  //Stop updating bc process is battery intensive.
-            let latitude = String (location.coordinate.latitude)
-            let longitude = String (location.coordinate.longitude)
-            
-            lat = location.coordinate.latitude
-            long = location.coordinate.longitude
-            
-            print("Lat : " + latitude + " Longit : " + longitude)
-            
-            //Create Dictionary / Hash Table with parameters that will go into URL of HTTP GET request.
-            let params : [String : String] = ["lat" : latitude,
-                                                    "lon" : longitude,
-                                                    "appid" : APP_ID]
-            
-            getWeatherData(url : WEATHER_URL, params : params)
             
         }
-        
+        else {
+            print("CITYNOTFOUNDE")
+            cityLabel.text = formattingSpaces + "City Not Found"
+            temperatureLabel.text = ""
+            conditionLabel.text = "Insert a new city"
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        cityLabel.text = "Location Unavailable"
-    }
     
-    
-    //MARK: - Notification Observer Methods
-    //Function when app comes back from background.
-    @objc func willEnterForeground(){
-        print("enters foreground")
+    //MARK: - UI Updates
+    func updateUI() {
         
-        //We want to update location and check time when app comes back to foreground.
-        locationManager.startUpdatingLocation()
+        temperatureLabel.text = String (weatherDataModel.temperature) + "°"
+        cityLabel.text = formattingSpaces + weatherDataModel.city
+        conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
+        
+        timeOfDay = checkTime()
+        
+        if(timeOfDay == 0){
+            backgroundImage.image = UIImage(named: "Sun.png")
+        }
+        else if(timeOfDay == 1){
+            backgroundImage?.image = UIImage(named: "Moon.png")
+        }
+        else if(timeOfDay == 2){
+            backgroundImage.image = UIImage(named: "Blood.jpg")
+        }
+        
+        let climaVC = ClimaViewController()
+        let closetVC = ClosetViewController()
         
     }
     
@@ -211,6 +222,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - Check Time
     func checkTime() -> Int {
         
+        //Retrieve time zone.
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let timeZone = TimezoneMapper.latLngToTimezone(location)
         
@@ -233,7 +245,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let sunsetUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunset))
         let sunsetTime = dateFormatter.string(from: sunsetUTC as Date)
         
-        
+        //We need the time as integer to compare it.
         convertTimeToInt(timeString: currentTime, timeType: 0)
         convertTimeToInt(timeString: sunriseTime, timeType: 1)
         convertTimeToInt(timeString: sunsetTime, timeType: 2)
@@ -332,38 +344,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
-    //MARK: - UI Updates
-    func updateUI() {
-        
-        temperatureLabel.text = String (weatherDataModel.temperature) + "°"
-        cityLabel.text = formattingSpaces + weatherDataModel.city
-        conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
-        
-        timeOfDay = checkTime()
-        
-        if(timeOfDay == 0){
-            backgroundImage.image = UIImage(named: "Sun.png")
-        }
-        else if(timeOfDay == 1){
-            backgroundImage?.image = UIImage(named: "Moon.png")
-        }
-        else if(timeOfDay == 2){
-            backgroundImage.image = UIImage(named: "Blood.jpg")
-        }
-    
-        let climaVC = ClimaViewController()
-        let closetVC = ClosetViewController()
-                
-    }
-
-    
-    
     func userEnteredNewCityName(city: String) {
         
         ClimaViewController.pressed = false
         print("DATA RECEIVED")
-
 
         let params : [String: String] = ["q" : city, "appid" : APP_ID]
         getWeatherData(url: WEATHER_URL, params: params)
