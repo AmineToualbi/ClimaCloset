@@ -9,5 +9,7 @@ target 'ClimaCloset' do
     pod 'SwiftyJSON'
     pod 'Alamofire'
     pod 'SVProgressHUD'
+    pod 'LatLongToTimezone', '~> 1.1'
+
 
 end

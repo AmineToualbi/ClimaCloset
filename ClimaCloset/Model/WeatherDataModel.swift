@@ -40,7 +40,7 @@ class WeatherDataModel {
             return "Thunderstorm"
             
         case 800 :
-            return "Sunny"
+            return "Clear"
             
         case 801...804 :
             return "Cloudy"
@@ -52,7 +52,7 @@ class WeatherDataModel {
             return "Snowy"
             
         case 904 :
-            return "Sunny"
+            return "Clear"
             
         default :
             return ""

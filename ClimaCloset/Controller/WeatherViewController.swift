@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import LatLongToTimezone
 
 
 
@@ -51,6 +52,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var sunsetMin : Int = 0
     var sunriseHour : Int = 0
     var sunriseMin : Int = 0
+    
+    var long : CLLocationDegrees = 0
+    var lat : CLLocationDegrees = 0
 
     
     
@@ -138,11 +142,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             weatherDataModel.sunrise = json["sys"]["sunrise"].intValue
             weatherDataModel.sunset = json["sys"]["sunset"].intValue
             
+            lat = json["coord"]["lat"].doubleValue
+            long = json["coord"]["lon"].doubleValue
+            
             print("TEMPERATURE " + String(weatherDataModel.temperature))
             print("CITY " + String(weatherDataModel.city))
             print("CONDITION " + String(weatherDataModel.condition))
             print("SUNRISE " + String(weatherDataModel.sunrise))
             print("SUNSET " + String(weatherDataModel.sunset))
+            print("LAT " + String(lat))
+            print("LONG " + String(long))
             
             updateUI()
         }
@@ -166,6 +175,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()  //Stop updating bc process is battery intensive.
             let latitude = String (location.coordinate.latitude)
             let longitude = String (location.coordinate.longitude)
+            
+            lat = location.coordinate.latitude
+            long = location.coordinate.longitude
             
             print("Lat : " + latitude + " Longit : " + longitude)
             
@@ -198,6 +210,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - Check Time
     func checkTime() -> Int {
+        
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let timeZone = TimezoneMapper.latLngToTimezone(location)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd:MM:yyyy hh:mm:ss"
+        dateFormatter.timeZone = timeZone
+        
+        print("TIME IN CURRENT CITY IS : " + dateFormatter.string(from: Date()))
         
         let calendar = Calendar.current
         //now is in the format 2018-10-25 06:21:42
@@ -263,7 +284,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    //If timeType = 0, we are calculating current tine. If timeType = 1 => sunrise. If timeType = 2 => sunset.
+    //If timeType = 0, we are calculating current time. If timeType = 1 => sunrise. If timeType = 2 => sunset.
     func convertTimeToInt(timeString : String, timeType : Int){
         
         let startIndexHour = timeString.index(timeString.startIndex, offsetBy: 11)
@@ -323,23 +344,30 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         cityLabel.text = formattingSpaces + weatherDataModel.city
         conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
         
-        if(checkTime() == 0){
+        timeOfDay = checkTime()
+        
+        if(timeOfDay == 0){
             backgroundImage.image = UIImage(named: "Sun.png")
         }
-        else if(checkTime() == 1){
+        else if(timeOfDay == 1){
             backgroundImage?.image = UIImage(named: "Moon.png")
         }
-        else if(checkTime() == 2){
+        else if(timeOfDay == 2){
             backgroundImage.image = UIImage(named: "Blood.jpg")
         }
-        
+    
+        let climaVC = ClimaViewController()
+        let closetVC = ClosetViewController()
+                
     }
 
     
     
     func userEnteredNewCityName(city: String) {
         
+        ClimaViewController.pressed = false
         print("DATA RECEIVED")
+
 
         let params : [String: String] = ["q" : city, "appid" : APP_ID]
         getWeatherData(url: WEATHER_URL, params: params)

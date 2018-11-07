@@ -16,6 +16,7 @@ class ClosetViewController: UIViewController {
     @IBOutlet weak var backgroundCloset: UIImageView!
     
     var timeOfDayCloset : Int = 0
+    var viewAlreadyInitialized : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,8 @@ class ClosetViewController: UIViewController {
         else if(timeOfDayCloset == 2){
             backgroundCloset.image = UIImage(named: "Blood BG.jpg")
         }
+        
+        viewAlreadyInitialized = true
         
     }
     

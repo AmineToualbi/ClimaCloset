@@ -70,18 +70,34 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         //Soluce 2
         if(currentIndex == 0) {
             (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+            
+            //(orderedViewControllers.last as! ClosetViewController).updateBackground()
+           // print("TIME OF DAY IN INDEX 0 IS \((orderedViewControllers[1] as! WeatherViewController).timeOfDay))")
         }
         
-        if(ClimaViewController.pressed) {
-            print("PRESSED TRUE IN FIRST. CITY = \(ClimaViewController.newCity)")
-            (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
-           // (orderedViewControllers[1] as! WeatherViewController).updateUI()
+        if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.first as! ClimaViewController).updateBackground()
+            print("FIRST UPBG HAPPENS")
+        }
+        if( (orderedViewControllers.last as! ClosetViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.last as! ClosetViewController).updateBackground()
+            print("LAST UPBG HAPPENS")
 
         }
+        //Execute userEnteredNewCityName using static newCity.
+        while(ClimaViewController.pressed) {
+            print("PRESSED TRUE IN FIRST. CITY = \(ClimaViewController.newCity)")
+            (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
+            // (orderedViewControllers[1] as! WeatherViewController).updateUI()
+//            ClimaViewController.pressed = false
+        }
+
+        
         
         return orderedViewControllers[previousIndex]
         
     }
+    
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
@@ -108,13 +124,30 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
        //Soluce 2
         if(currentIndex == orderedViewControllers.count-1) {
             (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+//            (orderedViewControllers.first as! ClimaViewController).updateBackground()
         }
-        if(ClimaViewController.pressed) {
+        
+        if( (orderedViewControllers.last as! ClosetViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.last as! ClosetViewController).updateBackground()
+            print("FIRST UPBG HAPPENS")
+
+        }
+        if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.first as! ClimaViewController).updateBackground()
+            print("LAST UPBG HAPPENS")
+
+        }
+        
+        //Execute userEnteredNewCityName using static newCity.
+        while(ClimaViewController.pressed) {
             print("PRESSED TRUE IN SECOND. City =  \(ClimaViewController.newCity)")
             (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
+        
+
           //  (orderedViewControllers[1] as! WeatherViewController).updateUI()
-            
-        }
+            //ClimaViewController.pressed = false
+            }
+        
         return orderedViewControllers[nextIndex]
         
     }
@@ -123,6 +156,19 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if( (orderedViewControllers.last as! ClosetViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.last as! ClosetViewController).updateBackground()
+            print("FIRST UPBG HAPPENS")
+            
+        }
+        if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
+            (orderedViewControllers.first as! ClimaViewController).updateBackground()
+            print("LAST UPBG HAPPENS")
+        }
+    }
 
     
 }
+

@@ -15,6 +15,7 @@ class ClimaViewController: UIViewController, UITextFieldDelegate {
     
     static var pressed : Bool = false
     static var newCity : String = ""
+    var viewAlreadyInitialized = false
     var cityName : String = ""
     
     @IBOutlet weak var cityInput: UITextField!
@@ -45,18 +46,11 @@ class ClimaViewController: UIViewController, UITextFieldDelegate {
         }
         ClimaViewController.newCity = cityName
         weatherDataModel.city = cityName
+        
+        //Pressed is set to true to notify PageViewController to pass variable to mainVC.
         ClimaViewController.pressed = true
         print("CONFIRM CALLED " + String(ClimaViewController.newCity))
 
-        
-        
-       // let weatherVC = WeatherViewController()
-       // let weatherVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherVC") as! WeatherViewController
-        
-      //  weatherVC.userEnteredNewCityName(city: cityName)
-        
-        
-       // self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -82,6 +76,8 @@ class ClimaViewController: UIViewController, UITextFieldDelegate {
             cityInput.keyboardAppearance = .dark
 
         }
+        
+        viewAlreadyInitialized = true
         
     }
     
