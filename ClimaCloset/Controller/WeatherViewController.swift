@@ -215,27 +215,23 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let timeZone = TimezoneMapper.latLngToTimezone(location)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd:MM:yyyy hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy:MM:dd hh:mm:ss"
         dateFormatter.timeZone = timeZone
         
-        print("TIME IN CURRENT CITY IS : " + dateFormatter.string(from: Date()))
+        print("TIME IN " + cityLabel.text! + " IS " + dateFormatter.string(from: Date()))
         
-        let calendar = Calendar.current
-        //now is in the format 2018-10-25 06:21:42
-        let now = Date()
-        //localizedString gets time of current time zone.
-        currentTime = DateFormatter.localizedString(from: now, dateStyle: .short, timeStyle: .short)
+        currentTime = dateFormatter.string(from: Date())
         print(currentTime)
 
-        //This part gets when the sun rises.
+      //  This part gets when the sun rises.
         let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunrise))
-        sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
+        //sunriseTime = DateFormatter.localizedString(from: sunriseUTC as Date, dateStyle: .short, timeStyle: .short)
+        sunriseTime = dateFormatter.string(from: sunriseUTC as Date)
         print(sunriseTime)
         
         //This part gets when sun sets.
         let sunsetUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunset))
-        let sunsetTime = DateFormatter.localizedString(from: sunsetUTC as Date, dateStyle: .short, timeStyle: .short)
-        print(sunsetTime)
+        let sunsetTime = dateFormatter.string(from: sunsetUTC as Date)
         
         
         convertTimeToInt(timeString: currentTime, timeType: 0)
