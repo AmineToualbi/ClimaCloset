@@ -113,24 +113,46 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+//
+//      //  if( (orderedViewControllers.last as! ClosetViewController).viewAlreadyInitialized == true){
+//            (orderedViewControllers.last as! ClosetViewController).updateBackground()
+//            print("FIRST UPBG HAPPENS")
+//
+//        //}
+//       // if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
+//            (orderedViewControllers.first as! ClimaViewController).updateBackground()
+//            print("LAST UPBG HAPPENS")
+//       // }
+//
+//        while(ClimaViewController.pressed) {
+//            print("PRESSED TRUE IN SECOND. City =  \(ClimaViewController.newCity)")
+//            (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
+//
+//        }
+//
+//    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
-      //  if( (orderedViewControllers.last as! ClosetViewController).viewAlreadyInitialized == true){
-            (orderedViewControllers.last as! ClosetViewController).updateBackground()
-            print("FIRST UPBG HAPPENS")
-            
+        //Update timeOfDayClima to fix bug of ClimaVC background not updating after pressing "Confirm".
+        (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+        
+        (orderedViewControllers.last as! ClosetViewController).updateBackground()
+        print("FIRST UPBG HAPPENS")
+        
         //}
-       // if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
-            (orderedViewControllers.first as! ClimaViewController).updateBackground()
-            print("LAST UPBG HAPPENS")
-       // }
+        // if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
+        (orderedViewControllers.first as! ClimaViewController).updateBackground()
+        print("LAST UPBG HAPPENS")
+        // }
         
         while(ClimaViewController.pressed) {
+            
             print("PRESSED TRUE IN SECOND. City =  \(ClimaViewController.newCity)")
             (orderedViewControllers[1] as! WeatherViewController).userEnteredNewCityName(city: ClimaViewController.newCity)
-        
+            
         }
-        
     }
 
     
