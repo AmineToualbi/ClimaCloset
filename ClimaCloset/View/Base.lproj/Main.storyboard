@@ -30,13 +30,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJL-cl-z67">
-                                <rect key="frame" x="184.66666666666666" y="209.66666666666666" width="45" height="21"/>
+                                <rect key="frame" x="184.66666666666666" y="210" width="45" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-Ur-meP">
-                                <rect key="frame" x="167.66666666666666" y="140" width="79" height="61.666666666666657"/>
+                                <rect key="frame" x="167.66666666666666" y="140" width="79" height="62"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="52"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,9 +53,24 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clima Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-jM-PxP">
                                 <rect key="frame" x="0.0" y="46" width="414" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WHl-1w-f4e">
+                                <rect key="frame" x="352" y="641" width="42" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="Ryd-fY-HMs"/>
+                                    <constraint firstAttribute="height" constant="28" id="igV-pL-iQ7"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="°C"/>
+                                    <segment title="°F"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="temperatureUnitChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="255-nt-3hM"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -64,6 +79,7 @@
                             <constraint firstItem="dJL-cl-z67" firstAttribute="top" secondItem="uqp-Ur-meP" secondAttribute="bottom" constant="8" symbolic="YES" id="D4L-UF-M59"/>
                             <constraint firstItem="Aci-Or-5od" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="O21-C0-6LY"/>
                             <constraint firstItem="um4-Sz-CgH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QtE-WG-WlY"/>
+                            <constraint firstItem="WHl-1w-f4e" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RSZ-IW-Vo8"/>
                             <constraint firstItem="uqp-Ur-meP" firstAttribute="centerX" secondItem="dJL-cl-z67" secondAttribute="centerX" id="YVc-op-L0S"/>
                             <constraint firstItem="8AO-jM-PxP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bro-Fj-mNz"/>
                             <constraint firstItem="Aci-Or-5od" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eLf-Ak-Zoc"/>
@@ -71,6 +87,7 @@
                             <constraint firstItem="8AO-jM-PxP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fOn-Nn-c0J"/>
                             <constraint firstItem="uqp-Ur-meP" firstAttribute="centerX" secondItem="8AO-jM-PxP" secondAttribute="centerX" id="gNV-Vr-wJ5"/>
                             <constraint firstItem="Aci-Or-5od" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gnz-vF-ouK"/>
+                            <constraint firstItem="WHl-1w-f4e" firstAttribute="bottom" secondItem="Teg-dY-CLu" secondAttribute="bottom" id="iuM-H0-8xu"/>
                             <constraint firstItem="8AO-jM-PxP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="lGL-Sq-kLc"/>
                             <constraint firstItem="Teg-dY-CLu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mjW-Z1-qen"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Teg-dY-CLu" secondAttribute="bottom" constant="67" id="oVz-Zj-3a0"/>
@@ -83,12 +100,13 @@
                         <outlet property="backgroundImage" destination="Aci-Or-5od" id="of6-IS-2iw"/>
                         <outlet property="cityLabel" destination="Teg-dY-CLu" id="Kdg-i0-X0v"/>
                         <outlet property="conditionLabel" destination="dJL-cl-z67" id="RQO-sK-1O2"/>
+                        <outlet property="tempUnitSegmentControl" destination="WHl-1w-f4e" id="gcd-Bq-uNC"/>
                         <outlet property="temperatureLabel" destination="uqp-Ur-meP" id="6h1-eP-Z9M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.75" y="129.92957746478874"/>
+            <point key="canvasLocation" x="136.875" y="128.87323943661971"/>
         </scene>
         <!--Clima View Controller-->
         <scene sceneID="KXw-uj-9Zc">

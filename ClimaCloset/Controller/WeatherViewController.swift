@@ -52,6 +52,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager();
     
+    @IBOutlet weak var tempUnitSegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,7 +164,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         //We only need to check that one field is filled to ensure the others are.
         if let tempResult = json["main"]["temp"].double {
             
-            weatherDataModel.temperature = Int (tempResult - 273.15)
+//            weatherDataModel.temperature = Int (tempResult - 273.15)
+            weatherDataModel.temperature = Int (tempResult)
             weatherDataModel.city = json["name"].stringValue
             //Use index 0 here bc "weather" contains array & we need to choose index.
             weatherDataModel.condition = json["weather"][0]["id"].intValue
@@ -197,7 +199,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - UI Updates
     func updateUI() {
         
-        temperatureLabel.text = String (weatherDataModel.temperature) + "°"
+        var temp: Double = 0
+        if(tempUnitSegmentControl.selectedSegmentIndex == 0){
+            temp = Double(weatherDataModel.temperature) - 273.15
+        }
+        else if (tempUnitSegmentControl.selectedSegmentIndex == 1) {
+            temp = 9/5 * (Double(weatherDataModel.temperature) - 273.15) + 32
+        }
+        
+        //Format temp to 0 decimal places.
+        temperatureLabel.text = String(format: "%.0f", temp) + "°"
         cityLabel.text = formattingSpaces + weatherDataModel.city
         conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
         
@@ -213,6 +224,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             backgroundImage.image = UIImage(named: "Blood.jpg")
         }
         
+        //Initialize the 2 other Views after updating to ensure that data gets passed along to "not nil" views.
         let climaVC = ClimaViewController()
         let closetVC = ClosetViewController()
         
@@ -343,6 +355,22 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    @IBAction func temperatureUnitChanged(_ sender: Any) {
+        
+        updateUI()
+//        switch tempUnitSegmentControl.selectedSegmentIndex {
+//        case 0:
+//            weatherDataModel.temperature = weatherDataModel.temperature - 273
+//            temperatureLabel.text = String (weatherDataModel.temperature)
+//            break
+//        case 2:
+//            weatherDataModel.temperature = Int (9/5 * (weatherDataModel.temperature - 273) + 32)
+//            temperatureLabel.text = String (weatherDataModel.temperature)
+//            break
+//        default:
+//            break
+//        }
+    }
     
     func userEnteredNewCityName(city: String) {
         
