@@ -10,13 +10,23 @@ import UIKit
 
 class ClosetViewController: UIViewController {
     
-    @IBOutlet weak var topItem: UIImageView!
-    @IBOutlet weak var pantsItem: UIImageView!
-    @IBOutlet weak var shoesItem: UIImageView!
+    
     @IBOutlet weak var backgroundCloset: UIImageView!
     
+    @IBOutlet weak var outfitImage: UIImageView!
     var timeOfDayCloset : Int = 0
     var viewAlreadyInitialized : Bool = false
+    
+    let weatherDataModel = WeatherDataModel()
+    
+    let averageOutfits = ["Average 1", "Average2", "Average 3", "Average 4"]
+    let chillOutfits = ["Chill 1", "Chill 2", "Chill 3", "Chill 4", "Chill 5"]
+    let coldOutfits = ["Cold 1", "Cold 2", "Cold 3"]
+    let warmOutfits = ["Warm 1", "Warm 2", "Warm 3", "Warm 4"]
+    
+    var previousCityInputted: String = ""
+    static var updateOutfitControl: Int = 0
+    var updateOutfitControlComparator: Int = (-1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +59,54 @@ class ClosetViewController: UIViewController {
         }
         
         viewAlreadyInitialized = true
+        
+        if(updateOutfitControlComparator + 1 == ClosetViewController.updateOutfitControl) {
+            updateOutfitControlComparator += 1
+            updateOutfit()
+        }
+        
+    }
+    
+    func updateOutfit() {
+        
+        
+        let temp = Double(WeatherDataModel.temperature) - 273.15
+        
+        let outfit: String = weatherDataModel.updateClosetImage(temperature: Int(temp))
+        
+        print("Temperature is " + String(temp))
+        
+        
+        if (outfit == "chill") {
+            print("CHILL SELECTED")
+            let random: Int = Int(arc4random_uniform(5))
+            print ("RANDOM = " + String(random))
+
+            outfitImage.image = UIImage(named: chillOutfits[random])
+        }
+        
+        else if (outfit == "average") {
+            print ("AVERAGE SELECTED")
+            let random: Int = Int(arc4random_uniform(4))
+            print ("RANDOM = " + String(random))
+            outfitImage.image = UIImage(named: averageOutfits[random])
+        }
+            
+        else if (outfit == "cold") {
+            print ("COLD SELECTED")
+            let random: Int = Int(arc4random_uniform(3))
+            print ("RANDOM = " + String(random))
+
+            outfitImage.image = UIImage(named: coldOutfits[random])
+        }
+        
+        else if (outfit == "warm") {
+            print ("WARM SELECTED")
+            let random: Int = Int(arc4random_uniform(4))
+            print ("RANDOM = " + String(random))
+
+            outfitImage.image = UIImage(named: warmOutfits[random])
+        }
         
     }
     

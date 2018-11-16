@@ -189,43 +189,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sun BG" translatesAutoresizingMaskIntoConstraints="NO" id="ZhT-YZ-KlF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-C4-iKy" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="85" width="414" height="632"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hoodie 1" translatesAutoresizingMaskIntoConstraints="NO" id="pZ8-Oi-DaU">
-                                        <rect key="frame" x="44" y="66" width="130" height="155"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="155" id="0XC-tS-M2Q"/>
-                                            <constraint firstAttribute="width" constant="130" id="yF4-mV-YXf"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jeans 1" translatesAutoresizingMaskIntoConstraints="NO" id="rQg-0U-Wcc">
-                                        <rect key="frame" x="182" y="109" width="224" height="218"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="218" id="0HV-ui-5aR"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sneakers 1" translatesAutoresizingMaskIntoConstraints="NO" id="69B-tt-F89">
-                                        <rect key="frame" x="71" y="298" width="76" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="Eme-CV-LZG"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="69B-tt-F89" firstAttribute="centerX" secondItem="pZ8-Oi-DaU" secondAttribute="centerX" id="3CH-qk-28N"/>
-                                    <constraint firstItem="rQg-0U-Wcc" firstAttribute="leading" secondItem="69B-tt-F89" secondAttribute="trailing" constant="35" id="3vZ-bI-LXu"/>
-                                    <constraint firstItem="69B-tt-F89" firstAttribute="top" secondItem="pZ8-Oi-DaU" secondAttribute="bottom" constant="77" id="4bY-hR-5Yi"/>
-                                    <constraint firstItem="pZ8-Oi-DaU" firstAttribute="leading" secondItem="ldf-C4-iKy" secondAttribute="leading" constant="44" id="Gww-id-RtT"/>
-                                    <constraint firstItem="pZ8-Oi-DaU" firstAttribute="top" secondItem="ldf-C4-iKy" secondAttribute="top" constant="66" id="LB4-rb-sIT"/>
-                                    <constraint firstItem="rQg-0U-Wcc" firstAttribute="trailing" secondItem="ldf-C4-iKy" secondAttribute="trailingMargin" id="WhL-Mx-fd3"/>
-                                    <constraint firstItem="rQg-0U-Wcc" firstAttribute="top" secondItem="ldf-C4-iKy" secondAttribute="top" constant="109" id="b8S-Fv-PhG"/>
-                                    <constraint firstItem="rQg-0U-Wcc" firstAttribute="leading" secondItem="pZ8-Oi-DaU" secondAttribute="trailing" constant="8" symbolic="YES" id="deL-br-LSV"/>
-                                </constraints>
-                            </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="9bB-zE-TeP">
-                                <rect key="frame" x="187.66666666666666" y="699" width="39" height="37"/>
-                            </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-je-dl1">
                                 <rect key="frame" x="0.0" y="46" width="414" height="32"/>
                                 <constraints>
@@ -235,44 +198,44 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chill 3 copy" translatesAutoresizingMaskIntoConstraints="NO" id="exq-Se-7xL" userLabel="Outfit Image">
+                                <rect key="frame" x="0.0" y="184" width="414" height="353"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="9bB-zE-TeP">
+                                <rect key="frame" x="141" y="699" width="132" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9bB-zE-TeP" firstAttribute="leading" secondItem="7dw-jc-XRZ" secondAttribute="leading" constant="141" id="0rC-ue-9kP"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="trailing" secondItem="bNf-je-dl1" secondAttribute="trailing" id="5fY-qa-gV7"/>
+                            <constraint firstItem="exq-Se-7xL" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="106" id="93o-LX-jhv"/>
+                            <constraint firstItem="9bB-zE-TeP" firstAttribute="centerX" secondItem="exq-Se-7xL" secondAttribute="centerX" id="BxO-wk-aNN"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="bottom" secondItem="7dw-jc-XRZ" secondAttribute="bottom" id="Faj-p9-VhQ"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="7" id="Jxg-cl-ePK"/>
+                            <constraint firstItem="exq-Se-7xL" firstAttribute="trailing" secondItem="bNf-je-dl1" secondAttribute="trailing" id="QWt-D4-rNQ"/>
                             <constraint firstItem="bNf-je-dl1" firstAttribute="top" secondItem="7dw-jc-XRZ" secondAttribute="top" constant="26" id="R15-yL-Xeq"/>
-                            <constraint firstItem="bNf-je-dl1" firstAttribute="leading" secondItem="ldf-C4-iKy" secondAttribute="leading" id="RoY-Pv-bzY"/>
                             <constraint firstAttribute="trailing" secondItem="ZhT-YZ-KlF" secondAttribute="trailing" id="TmQ-rE-Iko"/>
-                            <constraint firstItem="7dw-jc-XRZ" firstAttribute="bottom" secondItem="ldf-C4-iKy" secondAttribute="bottom" constant="19" id="Uap-ar-w2d"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="leading" secondItem="7dw-jc-XRZ" secondAttribute="leading" id="UkL-qG-hdm"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="leading" secondItem="bNf-je-dl1" secondAttribute="leading" id="Xks-qI-D0s"/>
-                            <constraint firstItem="bNf-je-dl1" firstAttribute="trailing" secondItem="ldf-C4-iKy" secondAttribute="trailing" id="czw-PD-ll6"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="top" secondItem="bNf-je-dl1" secondAttribute="bottom" constant="7" id="dgg-Th-3ru"/>
+                            <constraint firstItem="exq-Se-7xL" firstAttribute="centerY" secondItem="ZhT-YZ-KlF" secondAttribute="centerY" constant="-7.5" id="aIy-fY-UIy"/>
                             <constraint firstItem="9bB-zE-TeP" firstAttribute="bottom" secondItem="ZhT-YZ-KlF" secondAttribute="bottom" id="kqC-A2-xAu"/>
-                            <constraint firstItem="9bB-zE-TeP" firstAttribute="centerX" secondItem="ldf-C4-iKy" secondAttribute="centerX" id="sV8-fY-sX5"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="top" secondItem="RmG-N4-Se6" secondAttribute="top" id="uYD-dz-6bI"/>
-                            <constraint firstItem="ldf-C4-iKy" firstAttribute="trailing" secondItem="7dw-jc-XRZ" secondAttribute="trailing" id="z0h-AK-suK"/>
+                            <constraint firstItem="exq-Se-7xL" firstAttribute="leading" secondItem="bNf-je-dl1" secondAttribute="leading" id="yry-AR-Pa2"/>
                             <constraint firstItem="ZhT-YZ-KlF" firstAttribute="leading" secondItem="RmG-N4-Se6" secondAttribute="leading" id="zLd-Y4-B4I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dw-jc-XRZ"/>
                     </view>
                     <connections>
                         <outlet property="backgroundCloset" destination="ZhT-YZ-KlF" id="63e-SF-yWm"/>
-                        <outlet property="pantsItem" destination="rQg-0U-Wcc" id="LhD-aL-YBG"/>
-                        <outlet property="shoesItem" destination="69B-tt-F89" id="1cd-m2-xZm"/>
-                        <outlet property="topItem" destination="pZ8-Oi-DaU" id="Zbr-IL-aca"/>
+                        <outlet property="outfitImage" destination="exq-Se-7xL" id="mKl-WR-EbO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfM-MP-h1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939.375" y="129.92957746478874"/>
+            <point key="canvasLocation" x="936.23188405797111" y="128.80434782608697"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Hoodie 1" width="108" height="108"/>
-        <image name="Jeans 1" width="313" height="469"/>
-        <image name="Sneakers 1" width="427" height="239"/>
+        <image name="Chill 3 copy" width="913" height="976"/>
         <image name="Sun" width="180" height="320.16000366210938"/>
         <image name="Sun BG" width="57.360000610351562" height="165.36000061035156"/>
     </resources>

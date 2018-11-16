@@ -50,6 +50,8 @@ class ClimaViewController: UIViewController, UITextFieldDelegate {
         //Pressed is set to true to notify PageViewController to pass variable to mainVC.
         ClimaViewController.pressed = true
         print("CONFIRM CALLED " + String(ClimaViewController.newCity))
+        
+        ClosetViewController.updateOutfitControl += 1
 
         
     }

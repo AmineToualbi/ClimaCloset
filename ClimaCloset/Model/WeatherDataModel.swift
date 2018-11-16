@@ -11,11 +11,11 @@ import Foundation
 class WeatherDataModel {
     
     //Model variables retrieved from JSON. 
-    var temperature : Int = 0
-    var condition : Int = 0
-    var city : String = ""
-    var sunset : Int = 0
-    var sunrise : Int = 0
+    static var temperature : Int = 0
+     var condition : Int = 0
+      var city : String = ""
+     var sunset : Int = 0
+     var sunrise : Int = 0
     
     func updateConditionLabel(condition: Int) -> String {
         
@@ -56,6 +56,30 @@ class WeatherDataModel {
             
         default :
             return ""
+        }
+        
+    }
+    
+    func updateClosetImage(temperature: Int) -> String {
+        
+        
+        switch (temperature) {
+            
+        case ..<(-5) :
+            return "cold"
+            
+        case -4...6:
+            return "chill"
+        
+        case 7...16:
+            return "average"
+            
+        case 17...:
+            return "warm"
+        
+        default :
+        return ""
+        
         }
         
     }

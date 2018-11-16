@@ -165,7 +165,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         if let tempResult = json["main"]["temp"].double {
             
 //            weatherDataModel.temperature = Int (tempResult - 273.15)
-            weatherDataModel.temperature = Int (tempResult)
+            WeatherDataModel.temperature = Int (tempResult)
             weatherDataModel.city = json["name"].stringValue
             //Use index 0 here bc "weather" contains array & we need to choose index.
             weatherDataModel.condition = json["weather"][0]["id"].intValue
@@ -176,7 +176,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             lat = json["coord"]["lat"].doubleValue
             long = json["coord"]["lon"].doubleValue
             
-            print("TEMPERATURE " + String(weatherDataModel.temperature))
+            print("TEMPERATURE " + String(WeatherDataModel.temperature))
             print("CITY " + String(weatherDataModel.city))
             print("CONDITION " + String(weatherDataModel.condition))
             print("SUNRISE " + String(weatherDataModel.sunrise))
@@ -201,14 +201,19 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         var temp: Double = 0
         if(tempUnitSegmentControl.selectedSegmentIndex == 0){
-            temp = Double(weatherDataModel.temperature) - 273.15
+            temp = Double(WeatherDataModel.temperature) - 273.15
         }
         else if (tempUnitSegmentControl.selectedSegmentIndex == 1) {
-            temp = 9/5 * (Double(weatherDataModel.temperature) - 273.15) + 32
+            temp = 9/5 * (Double(WeatherDataModel.temperature) - 273.15) + 32
         }
         
-        //Format temp to 0 decimal places.
-        temperatureLabel.text = String(format: "%.0f", temp) + "°"
+        if(temp > -1 && temp < 1) {
+            temperatureLabel.text = "0°"    //To fix bug showing - 0.
+        }
+        else {
+            //Format temp to 0 decimal places.
+            temperatureLabel.text = String(format: "%.0f", temp) + "°"
+        }
         cityLabel.text = formattingSpaces + weatherDataModel.city
         conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
         
@@ -280,7 +285,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         //Case 2 = LATE NIGHT
-        else if(currentTimeHour > nightSeparationHour){
+        else if(currentTimeHour >= nightSeparationHour){
             timeOfDay = 2
             WeatherViewController.timeOfDayStatic = timeOfDay
             return 2
