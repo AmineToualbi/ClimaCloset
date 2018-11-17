@@ -45,12 +45,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var long : CLLocationDegrees = 0
     var lat : CLLocationDegrees = 0
+    
+    static var updateReceived : Bool = false
 
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "8300f2d4182612b5d44c3fcb22ca0acc"
     
     let locationManager = CLLocationManager();
+    
     
     @IBOutlet weak var tempUnitSegmentControl: UISegmentedControl!
     
@@ -184,6 +187,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             print("LAT " + String(lat))
             print("LONG " + String(long))
             
+            WeatherViewController.updateReceived = true
             updateUI()
             
         }
@@ -232,6 +236,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         //Initialize the 2 other Views after updating to ensure that data gets passed along to "not nil" views.
         let climaVC = ClimaViewController()
         let closetVC = ClosetViewController()
+        
+        if closetVC.viewAlreadyInitialized {
+            closetVC.updateBackground()
+        }
         
     }
     

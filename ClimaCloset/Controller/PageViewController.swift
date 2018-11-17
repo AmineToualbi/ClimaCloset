@@ -123,8 +123,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         
         //}
         // if( (orderedViewControllers.first as! ClimaViewController).viewAlreadyInitialized == true){
-        (orderedViewControllers.first as! ClimaViewController).updateBackground()
-        print("LAST UPBG HAPPENS")
+            (orderedViewControllers.first as! ClimaViewController).updateBackground()
+            print("LAST UPBG HAPPENS")
+        
         // }
         
         while(ClimaViewController.pressed) {

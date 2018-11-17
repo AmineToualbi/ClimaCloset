@@ -68,10 +68,10 @@ class WeatherDataModel {
         case ..<(-5) :
             return "cold"
             
-        case -4...6:
+        case -5...9:
             return "chill"
         
-        case 7...16:
+        case 10...16:
             return "average"
             
         case 17...:
