@@ -103,6 +103,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         if(currentIndex == orderedViewControllers.count-1) {
             (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
         }
+            
+        
         
         return orderedViewControllers[nextIndex]
         
@@ -117,6 +119,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         
         //Update timeOfDayClima to fix bug of ClimaVC background not updating after pressing "Confirm".
         (orderedViewControllers.first as! ClimaViewController).timeOfDayClima = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+        (orderedViewControllers.last as! ClosetViewController).timeOfDayCloset = (orderedViewControllers[1] as! WeatherViewController).timeOfDay
+
         
         (orderedViewControllers.last as! ClosetViewController).updateBackground()
         print("FIRST UPBG HAPPENS")
@@ -135,6 +139,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             
         }
     }
+    
 
     
 }

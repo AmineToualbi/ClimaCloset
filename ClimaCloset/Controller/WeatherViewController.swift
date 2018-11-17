@@ -88,10 +88,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //Function when app comes back from background.
     @objc func willEnterForeground(){
         print("enters foreground")
-        
         //We want to update location and check time when app comes back to foreground.
         locationManager.startUpdatingLocation()
-        
     }
     
     
