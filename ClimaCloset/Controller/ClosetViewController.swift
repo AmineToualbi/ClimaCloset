@@ -64,7 +64,7 @@ class ClosetViewController: UIViewController {
         
         print ("UPDATE RESEIVED = " + String(WeatherViewController.updateReceived))
         
-        if(updateOutfitControlComparator + 1 == ClosetViewController.updateOutfitControl && WeatherViewController.updateReceived == true) {
+        if(WeatherViewController.updateReceived == true) {
             updateOutfitControlComparator += 1
             updateOutfit()
             WeatherViewController.updateReceived = false

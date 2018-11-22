@@ -172,6 +172,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             weatherDataModel.condition = json["weather"][0]["id"].intValue
             weatherDataModel.sunrise = json["sys"]["sunrise"].intValue
             weatherDataModel.sunset = json["sys"]["sunset"].intValue
+            weatherDataModel.country = json["sys"]["country"].stringValue
             
             //Set lat & long to JSON values bc we don't already have it if user inputs city name.
             lat = json["coord"]["lat"].doubleValue
@@ -216,7 +217,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             //Format temp to 0 decimal places.
             temperatureLabel.text = String(format: "%.0f", temp) + "°"
         }
-        cityLabel.text = formattingSpaces + weatherDataModel.city
+        cityLabel.text = formattingSpaces + weatherDataModel.city + ", " + weatherDataModel.country
         conditionLabel.text = weatherDataModel.updateConditionLabel(condition: weatherDataModel.condition)
         
         timeOfDay = checkTime()

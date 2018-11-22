@@ -16,6 +16,7 @@ class WeatherDataModel {
       var city : String = ""
      var sunset : Int = 0
      var sunrise : Int = 0
+    var country : String = ""
     
     func updateConditionLabel(condition: Int) -> String {
         
