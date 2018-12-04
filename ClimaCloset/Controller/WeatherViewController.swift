@@ -290,6 +290,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 return 1
             }
         }
+            
+        if(currentTimeHour == sunsetHour) {
+          //  if(currentTimeMin  )
+        }
 
         //Case 2 = LATE NIGHT
         else if(currentTimeHour >= nightSeparationHour){

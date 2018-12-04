@@ -19,7 +19,7 @@ class ClosetViewController: UIViewController {
     
     let weatherDataModel = WeatherDataModel()
     
-    let averageOutfits = ["Average 1", "Average2", "Average 3", "Average 4"]
+    let averageOutfits = ["Average 1", "Average 2", "Average 3", "Average 4"]
     let chillOutfits = ["Chill 1", "Chill 2", "Chill 3", "Chill 4", "Chill 5"]
     let coldOutfits = ["Cold 1", "Cold 2", "Cold 3"]
     let warmOutfits = ["Warm 1", "Warm 2", "Warm 3", "Warm 4"]
