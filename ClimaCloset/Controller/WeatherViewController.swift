@@ -46,6 +46,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     var long : CLLocationDegrees = 0
     var lat : CLLocationDegrees = 0
     
+    var timeFormatTo12H : Bool = false
+    var timeMorning : Bool = false
+    
     static var updateReceived : Bool = false
 
     //Constants
@@ -250,14 +253,41 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let timeZone = TimezoneMapper.latLngToTimezone(location)
         
+        //let aTwentyFourHoursLocale = NSLocale(localeIdentifier: "en_GB")
+        
+        let locale = NSLocale.current
+        let formatter : String = DateFormatter.dateFormat(fromTemplate: "j", options:0, locale:locale)!
+        if formatter.contains("a") {
+            //phone is set to 12 hours
+            timeFormatTo12H = true
+            print("FORMAT IS 12H")
+        } else {
+            //phone is set to 24 hours
+            timeFormatTo12H = false
+        }
+        
+        print("CURRENT TIME FOR DIS TEST IS " + formatter)
+
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy:MM:dd hh:mm:ss"
+       // dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "jj", options: 0, locale: aTwentyFourHoursLocale as Locale)
+        dateFormatter.dateFormat = "yyyy:MM:dd hh:mm:ss a"
+
         dateFormatter.timeZone = timeZone
         
         print("TIME IN " + cityLabel.text! + " IS " + dateFormatter.string(from: Date()))
         
         currentTime = dateFormatter.string(from: Date())
-        print(currentTime)
+        print("CURRENT TIME FOR DIS TEST IS " + currentTime)
+        
+        if currentTime.contains("A") {
+            timeMorning = true
+        }
+        else {
+            timeMorning = false
+        }
+
+        
 
       //  This part gets when the sun rises.
         let sunriseUTC = NSDate(timeIntervalSince1970: TimeInterval(weatherDataModel.sunrise))
@@ -331,17 +361,27 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         if let checkNil = (Int) (String(timeString[startIndexHour...endIndexHour])){
             
             if(timeType == 0){
-                currentTimeHour = checkNil
+                if(timeFormatTo12H == true && timeMorning == false) {
+                    currentTimeHour = checkNil + 12
+                }
+                else {
+                    currentTimeHour = checkNil
+                }
                 print(currentTimeHour)
             }
                 
             else if(timeType == 1){
-                sunriseHour = checkNil
-                print(sunriseHour)
+                sunriseHour = checkNil      //No need to add +12 bc sunrise time is always less than 12 = always in the morning.
+                print("Sunrise hour \(sunriseHour)")
             }
                 
             else if(timeType == 2){
-                sunsetHour = checkNil
+                if(timeFormatTo12H == true) {
+                    sunsetHour = checkNil + 12
+                }
+                else {
+                    sunsetHour = checkNil
+                }
                 print("Sunset hour \(sunsetHour)")
             }
             
