@@ -321,9 +321,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
             
-        if(currentTimeHour == sunsetHour) {
-          //  if(currentTimeMin  )
-        }
 
         //Case 2 = LATE NIGHT
         else if(currentTimeHour >= nightSeparationHour){
@@ -361,6 +358,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         if let checkNil = (Int) (String(timeString[startIndexHour...endIndexHour])){
             
             if(timeType == 0){
+                if(timeFormatTo12H == true) {
+                    if(checkNil == 12 && timeMorning == true) {     //12 am is actually night & not morning.
+                        timeMorning = false;
+                    }
+                    else if(checkNil == 12 && timeMorning == false) {   //12 pm is actually noon & not midnight.
+                        timeMorning = true;
+                    }
+                }
                 if(timeFormatTo12H == true && timeMorning == false) {
                     currentTimeHour = checkNil + 12
                 }
