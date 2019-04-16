@@ -4,7 +4,7 @@ Clima Closet is an iOS app targeted towards children to teach them how to dress 
 
 
 
-# REST API & Libraries
+# API & Libraries
 
 The app communicates with OpenWeatherMap's REST API to retrieve weather data. 
 
