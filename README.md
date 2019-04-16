@@ -3,7 +3,8 @@
 Clima Closet is an iOS app targeted towards children to teach them how to dress based on the weather. 
 
 
-#API & Libraries
+# REST API & Libraries
+
 The app communicates with OpenWeatherMap's REST API to retrieve weather data. 
 
 Communication is handled using Alamofire and the JSON data is parsed using SwiftyJSON. 
@@ -11,7 +12,8 @@ Communication is handled using Alamofire and the JSON data is parsed using Swift
 Other libraries are used for UI enhancement such as SVProgressHUD and for functionality such as LatLongToTimezone. 
 
 
-#UI
+# UI
+
 The app presents an intuitive UI with three tabs that are accessed through swipe motion. 
 
 The background of the app adapts based on the time of the day. For instance, at night, it will take a darker tone. The time the sun sets and rises is determined with the REST API. 
