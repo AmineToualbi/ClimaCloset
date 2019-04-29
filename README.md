@@ -30,12 +30,12 @@ A second view is used to specify a city if the user would like to check the weat
 
 The third view generates an outfit based on data retrieved from the REST API. 
 
-![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset1.png)
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564336-climacloset1.png)
 
-![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset2.png)
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564336-climacloset2.png)
 
-![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset3.png)
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564336-climacloset3.png)
 
-![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset4.png)
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564336-climacloset4.png)
 
 
