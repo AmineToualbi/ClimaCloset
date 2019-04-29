@@ -4,9 +4,13 @@ Clima Closet is an iOS app targeted towards children to teach them how to dress 
 
 
 
-# API & Libraries
+# Functionality
 
-The app communicates with OpenWeatherMap's REST API to retrieve weather data. 
+When the app is opened and brought to the foreground, Clima Closet retrieves the GPS coordinates of the phone and communicates with OpenWeatherMap's REST API to retrieve weather data. 
+
+Based on the current weather conditions, an adequate outfit is generated. 
+
+The user has the choice to change the city to get a different outfit for this new city.  
 
 Communication is handled using Alamofire and the JSON data is parsed using SwiftyJSON. 
 
@@ -25,4 +29,13 @@ The main view presents a screen with the temperature, the weather condition, the
 A second view is used to specify a city if the user would like to check the weather and adequate outfit for a location different than his current. 
 
 The third view generates an outfit based on data retrieved from the REST API. 
+
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset1.png)
+
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset2.png)
+
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset3.png)
+
+![alt text](http://image.noelshack.com/fichiers/2019/18/1/1556564132-climacloset4.png)
+
 
