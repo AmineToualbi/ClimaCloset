@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="150" height="150" src="https://github.com/AmineToualbi/ClimaCloset/blob/master/ClimaCloset/Images.xcassets/AppIcon.appiconset/Icon-App-60x60%403x.png">
+</p>
+
 # ClimaCloset
 
 Clima Closet is an iOS app targeted towards children to teach them how to dress based on the weather. 
